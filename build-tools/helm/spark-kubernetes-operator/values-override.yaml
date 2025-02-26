@@ -1,0 +1,7 @@
+image:
+  repository: enginedatascience.azurecr.io/thirdparty/apache/spark/k8s-operator
+  pullPolicy: IfNotPresent
+  tag: latest
+  # If image digest is set then it takes precedence and the image tag will be ignored
+  # digest: ""
+
