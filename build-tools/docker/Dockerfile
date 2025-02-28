@@ -39,6 +39,8 @@ RUN groupadd --system --gid=$SPARK_UID spark && \
 COPY --from=builder --chown=spark:spark /app/spark-operator/build/libs/spark-kubernetes-operator-$APP_VERSION-all.jar $SPARK_OPERATOR_JAR
 COPY --from=builder --chown=spark:spark /app/build-tools/docker/docker-entrypoint.sh .
 
+COPY build-tools/docker/custom-scripts/pre-spark.sh /opt/custom-scripts/pre-spark.sh
+RUN chmod 755 /opt/custom-scripts/pre-spark.sh
 
 USER spark
 ENTRYPOINT ["/opt/spark-operator/operator/docker-entrypoint.sh"]

@@ -204,7 +204,8 @@ public class SparkClusterResourceSpec {
         .addToCommand("bash")
         .addToArgs(
             "-c",
-            "/opt/spark/sbin/start-master.sh && while /opt/spark/sbin/spark-daemon.sh status "
+            "/opt/custom-scripts/pre-spark.sh && "
+                + "/opt/spark/sbin/start-master.sh && while /opt/spark/sbin/spark-daemon.sh status "
                 + "org.apache.spark.deploy.master.Master 1; do sleep 1; done")
         .addNewPort()
         .withName("web")
